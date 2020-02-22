@@ -137,74 +137,72 @@ class _MyHomePageState extends State<MyHomePage> {
                               AssetImage('assets/images/profile.jpg'),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Zahra Ahmadi',
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          Text(
-                            'web developer',
-                            textAlign: TextAlign.left,
-                            style:
-                                TextStyle(fontSize: 17, color: Colors.blueGrey),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 33,
-                                child: FlatButton(
-                                  onPressed: () {},
-                                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  color: Colors.blue,
-                                  textColor: Colors.white,
-                                  child: Text(
-                                    "Follow",
-                                    style: TextStyle(
-                                      fontSize: 15,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Zahra Ahmadi',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              child: Text(
+                                'web developer',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontSize: 17, color: Colors.blueGrey),
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 30,
+                                  child: FlatButton(
+                                    onPressed: () {},
+                                    padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(18.0),
+                                        side: BorderSide(color: Colors.white)),
+                                    color: Colors.blue,
+                                    textColor: Colors.white,
+                                    child: Text(
+                                      "Follow",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              SizedBox(
-                                width: 55,
-                                height: 33,
-                                child: FlatButton(
-                                  onPressed: () {},
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(20.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  color: Colors.cyan.shade300,
-                                  textColor: Colors.white,
-                                  child: Icon(Icons.forward, size: 20),
+                                SizedBox(
+                                  width: 5,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 40,
+                                SizedBox(
+                                  width: 55,
+                                  height: 30,
+                                  child: FlatButton(
+                                    onPressed: () {},
+                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(20.0),
+                                        side: BorderSide(color: Colors.white)),
+                                    color: Colors.cyan.shade300,
+                                    textColor: Colors.white,
+                                    child: Icon(Icons.forward, size: 20),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-//                SizedBox(
-//                  height: 20,
-//                ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -252,9 +250,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-//                  SizedBox(
-//                    height: 20,
-//                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -264,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0, 0),
                             child: Container(
-                              width: 150,
+                              width: 170,
                               height: 200,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -282,10 +277,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0, 0),
+                            padding:
+                                const EdgeInsets.fromLTRB(0.0, 10.0, 10, 0),
                             child: Container(
                               height: 150,
-                              width: 150,
+                              width: 170,
                               constraints: BoxConstraints(minWidth: 150),
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -304,15 +300,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
                       Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
                             child: Container(
-                              width: 150,
+                              width: 170,
                               height: 150,
                               constraints: BoxConstraints(minWidth: 150),
                               decoration: BoxDecoration(
@@ -334,7 +327,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
                             child: Container(
                               height: 150,
-                              width: 150,
+                              width: 170,
                               constraints: BoxConstraints(minWidth: 150),
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -355,9 +348,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-//                  SizedBox(
-//                    height: 20,
-//                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
