@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'picture.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -65,6 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Picture> pictures = [
+      Picture(url: 'assets/images/ax.jpg', width: 170, height: 250),
+      Picture(url: 'assets/images/ax2.jpg', width: 170, height: 150),
+      Picture(url: 'assets/images/ax3.jpg', width: 170, height: 150),
+      Picture(url: 'assets/images/ax4.jpg', width: 170, height: 150),
+    ];
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -87,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 // Column is also a layout widget. It takes a list of children and
                 // arranges them vertically. By default, it sizes itself to fit its
                 // children horizontally, and tries to be as tall as its parent.
@@ -203,151 +211,296 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            '200',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          Text(
-                            'photos',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.blueGrey),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            '15K',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          Text(
-                            'followers',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.blueGrey),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            '654',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          Text(
-                            'followings',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.blueGrey),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              '200',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                            Text(
+                              'photos',
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.blueGrey),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              '15K',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                            Text(
+                              'followers',
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.blueGrey),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              '654',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                            Text(
+                              'followings',
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.blueGrey),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0, 0),
-                            child: Container(
-                              width: 170,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/ax.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border(
-                                  left: BorderSide(
-                                    color: Colors.white,
-                                    width: 10,
-                                  ),
-                                ),
-                              ),
+//                  Expanded(
+//                    child: StaggeredGridView.countBuilder(
+//                      crossAxisCount: 4,
+//                      itemCount: 8,
+//                      itemBuilder: (BuildContext context, int index) =>
+//                          new Container(
+//                              color: Colors.green,
+//                              child: new Center(
+//                                child: new CircleAvatar(
+//                                  backgroundColor: Colors.white,
+//                                  child: new Text('$index'),
+//                                ),
+//                              )),
+//                      staggeredTileBuilder: (int index) =>
+//                          new StaggeredTile.count(2, index.isEven ? 2 : 1),
+//                      mainAxisSpacing: 4.0,
+//                      crossAxisSpacing: 4.0,
+//                    ),
+//                  ),
+                  Expanded(
+                    child: StaggeredGridView.countBuilder(
+                      padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10, 0),
+                      crossAxisCount: 2,
+                      itemCount: pictures.length,
+                      staggeredTileBuilder: (int i) {
+                        double ratio = pictures[i].height / pictures[i].width;
+                        return new StaggeredTile.count(1, ratio);
+                      },
+                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 10.0,
+                      itemBuilder: (ctx, i) => Container(
+                        width: pictures[i].width,
+                        height: pictures[i].height,
+                        //child: Image.asset(pictures[i].url),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(pictures[i].url),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border(
+                            left: BorderSide(
+                              color: Colors.white,
+                              width: 10,
                             ),
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(0.0, 10.0, 10, 0),
-                            child: Container(
-                              height: 150,
-                              width: 170,
-                              constraints: BoxConstraints(minWidth: 150),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/ax2.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border(
-                                  left: BorderSide(
-                                    color: Colors.white,
-                                    width: 10,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
-                            child: Container(
-                              width: 170,
-                              height: 150,
-                              constraints: BoxConstraints(minWidth: 150),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/ax3.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border(
-                                  left: BorderSide(
-                                    color: Colors.white,
-                                    width: 10,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
-                            child: Container(
-                              height: 150,
-                              width: 170,
-                              constraints: BoxConstraints(minWidth: 150),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/ax4.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border(
-                                  left: BorderSide(
-                                    color: Colors.white,
-                                    width: 10,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
+//                  GridView(
+//                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//                      maxCrossAxisExtent: 170,
+//                      mainAxisSpacing: 10,
+//                      crossAxisSpacing: 10,
+//                    ),
+//                    children: <Widget>[
+//                      Padding(
+//                        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0, 0),
+//                        child: Container(
+////                          width: 170,
+////                          height: 200,
+//                          decoration: BoxDecoration(
+//                            image: DecorationImage(
+//                              image: AssetImage(),
+//                              fit: BoxFit.cover,
+//                            ),
+//                            borderRadius: BorderRadius.circular(20),
+//                            border: Border(
+//                              left: BorderSide(
+//                                color: Colors.white,
+//                                width: 10,
+//                              ),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                      Padding(
+//                        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 10, 0),
+//                        child: Container(
+////                          height: 150,
+////                          width: 170,
+//                          constraints: BoxConstraints(minWidth: 150),
+//                          decoration: BoxDecoration(
+//                            image: DecorationImage(
+//                              image: AssetImage(),
+//                              fit: BoxFit.cover,
+//                            ),
+//                            borderRadius: BorderRadius.circular(20),
+//                            border: Border(
+//                              left: BorderSide(
+//                                color: Colors.white,
+//                                width: 10,
+//                              ),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                      Padding(
+//                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+//                        child: Container(
+////                          width: 170,
+////                          height: 150,
+//                          constraints: BoxConstraints(minWidth: 150),
+//                          decoration: BoxDecoration(
+//                            image: DecorationImage(
+//                              image: AssetImage('assets/images/ax3.jpg'),
+//                              fit: BoxFit.cover,
+//                            ),
+//                            borderRadius: BorderRadius.circular(20),
+//                            border: Border(
+//                              left: BorderSide(
+//                                color: Colors.white,
+//                                width: 10,
+//                              ),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                      Padding(
+//                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+//                        child: Container(
+////                          height: 150,
+////                          width: 170,
+//                          constraints: BoxConstraints(minWidth: 150),
+//                          decoration: BoxDecoration(
+//                            image: DecorationImage(
+//                              image: AssetImage('assets/images/ax4.jpg'),
+//                              fit: BoxFit.cover,
+//                            ),
+//                            borderRadius: BorderRadius.circular(20),
+//                            border: Border(
+//                              left: BorderSide(
+//                                color: Colors.white,
+//                                width: 10,
+//                              ),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                    ],
+//                  ),
+////                  Row(
+////                    crossAxisAlignment: CrossAxisAlignment.start,
+////                    mainAxisAlignment: MainAxisAlignment.center,
+////                    children: <Widget>[
+////                      Column(
+////                        children: <Widget>[
+////                          Padding(
+////                            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0, 0),
+////                            child: Container(
+////                              width: 170,
+////                              height: 200,
+////                              decoration: BoxDecoration(
+////                                image: DecorationImage(
+////                                  image: AssetImage('assets/images/ax.jpg'),
+////                                  fit: BoxFit.cover,
+////                                ),
+////                                borderRadius: BorderRadius.circular(20),
+////                                border: Border(
+////                                  left: BorderSide(
+////                                    color: Colors.white,
+////                                    width: 10,
+////                                  ),
+////                                ),
+////                              ),
+////                            ),
+////                          ),
+////                          Padding(
+////                            padding:
+////                                const EdgeInsets.fromLTRB(0.0, 10.0, 10, 0),
+////                            child: Container(
+////                              height: 150,
+////                              width: 170,
+////                              constraints: BoxConstraints(minWidth: 150),
+////                              decoration: BoxDecoration(
+////                                image: DecorationImage(
+////                                  image: AssetImage('assets/images/ax2.jpg'),
+////                                  fit: BoxFit.cover,
+////                                ),
+////                                borderRadius: BorderRadius.circular(20),
+////                                border: Border(
+////                                  left: BorderSide(
+////                                    color: Colors.white,
+////                                    width: 10,
+////                                  ),
+////                                ),
+////                              ),
+////                            ),
+////                          ),
+////                        ],
+////                      ),
+////                      Column(
+////                        children: <Widget>[
+////                          Padding(
+////                            padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+////                            child: Container(
+////                              width: 170,
+////                              height: 150,
+////                              constraints: BoxConstraints(minWidth: 150),
+////                              decoration: BoxDecoration(
+////                                image: DecorationImage(
+////                                  image: AssetImage('assets/images/ax3.jpg'),
+////                                  fit: BoxFit.cover,
+////                                ),
+////                                borderRadius: BorderRadius.circular(20),
+////                                border: Border(
+////                                  left: BorderSide(
+////                                    color: Colors.white,
+////                                    width: 10,
+////                                  ),
+////                                ),
+////                              ),
+////                            ),
+////                          ),
+////                          Padding(
+////                            padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+////                            child: Container(
+////                              height: 150,
+////                              width: 170,
+////                              constraints: BoxConstraints(minWidth: 150),
+////                              decoration: BoxDecoration(
+////                                image: DecorationImage(
+////                                  image: AssetImage('assets/images/ax4.jpg'),
+////                                  fit: BoxFit.cover,
+////                                ),
+////                                borderRadius: BorderRadius.circular(20),
+////                                border: Border(
+////                                  left: BorderSide(
+////                                    color: Colors.white,
+////                                    width: 10,
+////                                  ),
+////                                ),
+////                              ),
+////                            ),
+////                          ),
+////                        ],
+////                      ),
+////                    ],
+////                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
