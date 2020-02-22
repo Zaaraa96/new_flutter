@@ -167,29 +167,32 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             Row(
                               children: <Widget>[
-                                SizedBox(
-                                  height: 30,
-                                  child: FlatButton(
-                                    onPressed: () {},
-                                    padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(18.0),
-                                        side: BorderSide(color: Colors.white)),
-                                    color: Colors.blue,
-                                    textColor: Colors.white,
-                                    child: Text(
-                                      "Follow",
-                                      style: TextStyle(
-                                        fontSize: 15,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                  child: Container(
+                                    height: 30,
+                                    child: FlatButton(
+                                      onPressed: () {},
+                                      padding:
+                                          EdgeInsets.fromLTRB(30, 0, 30, 0),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(18.0),
+                                          side:
+                                              BorderSide(color: Colors.white)),
+                                      color: Colors.blue,
+                                      textColor: Colors.white,
+                                      child: Text(
+                                        "Follow",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                SizedBox(
+                                Container(
                                   width: 55,
                                   height: 30,
                                   child: FlatButton(
